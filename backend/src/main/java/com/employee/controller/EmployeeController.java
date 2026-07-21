@@ -18,21 +18,32 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    // Create Employee
+    /**
+     * Create a new employee
+     * @param employee the employee object to create
+     * @return the created employee with 201 status
+     */
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         Employee createdEmployee = employeeService.createEmployee(employee);
         return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
     }
 
-    // Get All Employees
+    /**
+     * Get all employees
+     * @return list of all employees with 200 status
+     */
     @GetMapping
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> employees = employeeService.getAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    // Get Employee by ID
+    /**
+     * Get employee by ID
+     * @param id the employee ID
+     * @return the employee if found with 200 status, otherwise 404
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Optional<Employee> employee = employeeService.getEmployeeById(id);
@@ -40,7 +51,12 @@ public class EmployeeController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    // Update Employee
+    /**
+     * Update an existing employee
+     * @param id the employee ID
+     * @param employeeDetails the updated employee details
+     * @return the updated employee with 200 status, or 404 if not found
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
         Employee updatedEmployee = employeeService.updateEmployee(id, employeeDetails);
@@ -51,7 +67,11 @@ public class EmployeeController {
         }
     }
 
-    // Delete Employee
+    /**
+     * Delete an employee by ID
+     * @param id the employee ID
+     * @return 204 No Content if deleted, 404 if not found
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         if (employeeService.deleteEmployee(id)) {
