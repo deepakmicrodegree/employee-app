@@ -10,9 +10,19 @@ import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Global Exception Handler
+ * Handles all exceptions across the application and returns appropriate HTTP responses
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * Handle ResourceNotFoundException
+     * @param ex the exception
+     * @param request the web request
+     * @return error response with 404 status
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> handleResourceNotFoundException(
             ResourceNotFoundException ex, WebRequest request) {
@@ -26,6 +36,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Handle all other exceptions
+     * @param ex the exception
+     * @param request the web request
+     * @return error response with 500 status
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGlobalException(
             Exception ex, WebRequest request) {

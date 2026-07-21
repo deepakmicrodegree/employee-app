@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * EmployeeService - Business Logic Layer
+ * Handles all employee-related business logic and operations
+ */
 @Service
 public class EmployeeService {
 

@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Employee Entity Model
+ * Represents an employee in the system with id, name, email, and department
+ */
 @Entity
 @Table(name = "employees")
 public class Employee implements Serializable {
@@ -24,9 +28,19 @@ public class Employee implements Serializable {
     private String department;
 
     // Constructors
+    /**
+     * Default constructor
+     */
     public Employee() {
     }
 
+    /**
+     * Constructor with all fields
+     * @param id the employee id
+     * @param name the employee name
+     * @param email the employee email
+     * @param department the employee department
+     */
     public Employee(Long id, String name, String email, String department) {
         this.id = id;
         this.name = name;
@@ -35,39 +49,75 @@ public class Employee implements Serializable {
     }
 
     // Getters and Setters
+    /**
+     * Get employee ID
+     * @return the employee ID
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Set employee ID
+     * @param id the employee ID
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Get employee name
+     * @return the employee name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set employee name
+     * @param name the employee name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Get employee email
+     * @return the employee email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Set employee email
+     * @param email the employee email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Get employee department
+     * @return the employee department
+     */
     public String getDepartment() {
         return department;
     }
 
+    /**
+     * Set employee department
+     * @param department the employee department
+     */
     public void setDepartment(String department) {
         this.department = department;
     }
 
     // toString
+    /**
+     * String representation of the employee
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "Employee{" +
@@ -79,6 +129,11 @@ public class Employee implements Serializable {
     }
 
     // equals
+    /**
+     * Check equality of two employees
+     * @param o the object to compare
+     * @return true if equal, false otherwise
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,6 +146,10 @@ public class Employee implements Serializable {
     }
 
     // hashCode
+    /**
+     * Generate hash code for the employee
+     * @return hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, name, email, department);

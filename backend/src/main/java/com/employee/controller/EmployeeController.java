@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * EmployeeController - REST API Layer
+ * Handles all HTTP requests for employee operations
+ */
 @RestController
 @RequestMapping("/employees")
 @CrossOrigin(origins = "http://localhost:4200")
