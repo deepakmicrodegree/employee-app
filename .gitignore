@@ -1,0 +1,34 @@
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.zip
+*.tar.gz
+*.rar
+target/
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Angular
+node_modules/
+dist/
+*.log
+ng-dist/
+angular.json.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
