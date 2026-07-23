@@ -4,6 +4,7 @@ phases:
   install:
     runtime-versions:
       java: corretto17
+      nodejs: 18
 
   pre_build:
     commands:
@@ -12,14 +13,27 @@ phases:
       - echo "========================================"
       - java -version
       - mvn -version
+      - node -v
+      - npm -v
 
   build:
     commands:
       - echo "========================================"
       - echo "Build Phase Starting"
       - echo "========================================"
+      - echo "--- Backend Build ---"
       - cd backend
       - mvn clean package -DskipTests
+      - cd ..
+      - echo "--- Frontend Build ---"
+      - cd frontend
+      - if [ ! -f angular.json ]; then
+          echo "ERROR: Angular workspace is incomplete.";
+          echo "Missing angular.json.";
+          exit 1;
+        fi
+      - npm install
+      - npm run build
 
   post_build:
     commands:
@@ -31,4 +45,5 @@ phases:
 artifacts:
   files:
     - backend/target/employee-app-1.0.0.jar
+    - frontend/dist/**/*
   discard-paths: no
